@@ -1,0 +1,47 @@
+body {
+    text-align: center;
+    background-color: darkslateblue;
+    padding-top: 40px;
+}
+.container {
+    border-radius: 30px;
+    background-color: white;
+    margin: 0 auto;
+    width: 450px;
+    height: auto;
+    padding: 15px;
+    box-shadow: 5px 10px;
+}
+h2 {
+    font-family: 'Koulen', cursive;
+    color: red;
+    text-shadow: blue 2px 2px;
+    font-size: 40px;
+}
+h3 {
+    margin-bottom: 0px;
+}
+p {
+    color: blue;
+}
+button {
+    margin: 20px;
+    border-radius: 30px;
+    transition: 1s ease all;
+    padding: 5px;
+    font-weight: bold;
+}
+button:hover {
+    background-color: yellow;
+    transition: 1s ease all;
+    padding: 10px;
+}
+input {
+    width: 300px;
+}
+img {
+    height: 200px;
+    margin-top: 20px;
+    display: none;
+    border-radius: 30px;
+}
