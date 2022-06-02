@@ -1,0 +1,71 @@
+
+body {
+    margin: 10px auto;
+    width: 80%;
+    background-color: rgb(75, 236, 225)
+}
+
+#output {
+    width: 720px;
+    height: 150px;
+    font-size: 20px;
+    padding-top: 10px;
+}
+
+.keyboard {
+    max-width: 700px;
+    min-width: 500px;
+    min-height: 110px;
+    max-height: 220px;
+    padding: 10px;
+    border: solid black 2px;
+    background-color: rgb(18, 24, 77);
+    border-radius: 10px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    background-color:transparent;
+
+}
+
+.key {
+    height: 40px;
+    width: 43px;
+    min-width: 20px;
+    min-height: 20px;
+    margin: 2px;
+    background-color: lightgrey;
+}
+.key:hover {
+    background-color: rgb(6, 224, 213);
+}
+
+#spacebar {
+    width: 300px;
+}
+
+#backspace {
+    width: 120px;
+}
+
+#tab1 {
+    width: 60px;
+}
+
+#caps {
+    width: 70px;
+}
+
+#enter {
+    width: 90px;
+}
+
+#shift {
+    width: 110px;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}

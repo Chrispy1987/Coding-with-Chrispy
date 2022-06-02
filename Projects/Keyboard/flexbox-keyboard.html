@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Flexbox Keyboard</title>
+    <link rel="stylesheet" href="keyboard.css">
+</head>
+<body>
+    <textarea id="output"></textarea>
+    <div class="keyboard">
+        <div class="row" id="row-0">
+            <button class="key">`</button>
+            <button class="key">1</button>
+            <button class="key">2</button>
+            <button class="key">3</button>
+            <button class="key">4</button>
+            <button class="key">5</button>
+            <button class="key">6</button>
+            <button class="key">7</button>
+            <button class="key">8</button>
+            <button class="key">9</button>
+            <button class="key">0</button>
+            <button class="key">-</button>
+            <button class="key">=</button>
+            <button class="key" id="backspace">&#9249; Backspace</button>
+        </div>
+        <div class="row" id="row-1">
+            <button class="key" id="tab1">Tab</button>
+            <button class="key letter">q</button>
+            <button class="key letter">w</button>
+            <button class="key letter">e</button>
+            <button class="key letter">r</button>
+            <button class="key letter">t</button>
+            <button class="key letter">y</button>
+            <button class="key letter">u</button>
+            <button class="key letter">i</button>
+            <button class="key letter">o</button>
+            <button class="key letter">p</button>
+            <button class="key">[</button>
+            <button class="key">]</button>
+            <button class="key" id="tab1">\</button>
+        </div>
+        <div class="row" id="row-2">
+            <button class="key" id="caps">Caps</button>
+            <button class="key letter">a</button>
+            <button class="key letter">s</button>
+            <button class="key letter">d</button>
+            <button class="key letter">f</button>
+            <button class="key letter">g</button>
+            <button class="key letter">h</button>
+            <button class="key letter">j</button>
+            <button class="key letter">k</button>
+            <button class="key letter">l</button>
+            <button class="key">;</button>
+            <button class="key">'</button>
+            <button class="key" id="enter">Enter</button>
+        </div>
+        <div class="row" id="row-3">
+            <button class="key" id="enter">Shift</button>
+            <button class="key letter">z</button>
+            <button class="key letter">x</button>
+            <button class="key letter">c</button>
+            <button class="key letter">v</button>
+            <button class="key letter">b</button>
+            <button class="key letter">n</button>
+            <button class="key letter">m</button>
+            <button class="key">,</button>
+            <button class="key">.</button>
+            <button class="key">/</button>
+            <button class="key" id="shift">Shift</button>
+        </div>
+        <div class="row" id="row-4">
+            <button class="key" id="tab1">ctrl</button>
+            <button class="key">fn</button>
+            <button class="key" id="alt">alt</button>
+            <button class="key">cmd</button>
+            <button class="key" id="spacebar"> </button>
+            <button class="key" id="all">&#9249; all</button>
+            <button class="key">win</button>
+            <button class="key">&#9249;</button>
+            <button class="key" id="tab1">ctrl</button>
+        </div>
+    </div>
+
+    <script>
+        const output = document.getElementById('output');
+        const keys = document.getElementsByClassName('key');
+        const letters = document.getElementsByClassName('letter');
+        let capsKey = document.getElementById('caps');
+        let caps = false;
+
+        for (let keyElement of keys) {
+            let key = keyElement.textContent;
+            keyElement.addEventListener('click', function() {
+
+                keyElement.style.backgroundColor = "yellow";
+
+                switch (key) {                    
+                    case '␡':
+                        output.textContent = output.textContent.slice(0, output.textContent.length-1);
+                        break;
+                    case '␡ Backspace':
+                        output.textContent = output.textContent.slice(0, output.textContent.length-1);
+                        break;
+                    case 'Tab':
+                        output.textContent += '    ';
+                        break;
+                    case 'Caps':
+                        caps = !caps;
+                        capsKey.style.backgroundColor = caps ? "lightgreen" : "lightgrey";
+                        for (const letter of letters) {
+                            if (letter.classList.contains('uppercase')) {
+                                letter.classList.remove('uppercase');
+                            } else {
+                                letter.classList.add('uppercase');
+                            }
+                        }
+                        break;
+                    case 'Enter':
+                        output.textContent += "\n";
+                        break;
+                    case '␡ all':
+                        output.textContent = '';
+                        break;
+                    default:
+                        output.textContent += caps ? key.toUpperCase() : key; 
+                }
+            });
+        }
+    </script>
+</body>
+</html>
