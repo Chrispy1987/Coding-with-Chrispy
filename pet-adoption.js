@@ -4,7 +4,7 @@
 const animals = [
     {name: 'Truffle', picture: 'https://dynaimage.cdn.cnn.com/cnn/c_fill,g_auto,w_1200,h_675,ar_16:9/https%3A%2F%2Fcdn.cnn.com%2Fcnnnext%2Fdam%2Fassets%2F210806141558-restricted-04b-truffles-the-kitty-glasses-kids.jpeg', status: 'available', species: 'cat'},
     {name: 'Mittens', picture: 'https://media.istockphoto.com/photos/british-kitten-with-mittens-picture-id156711869?k=20&m=156711869&s=612x612&w=0&h=QrtVAIMWnbiSucDXbKuqhOvswMCEKM7Z8NwUfhFs5sQ=', status: 'hold', species: 'cat'},
-    {name: 'Shadow', picture: 'https://render.fineartamerica.com/images/rendered/default/greeting-card/images/artworkimages/medium/2/black-lab-pup-1-jonathan-ross.jpg?&targetx=-25&targety=0&imagewidth=551&imageheight=700&modelwidth=500&modelheight=700&backgroundcolor=222524&orientation=1', status: 'adopted', species: 'dog'},
+    {name: 'Shadow', picture: 'https://render.fineartamerica.com/images/rendered/default/greeting-card/images/artworkimages/medium/2/black-lab-pup-1-jonathan-ross.jpg?&targetx=-25&targety=0&imagewidth=551&imageheight=700&modelwidth=500&modelheight=700&backgroundcolor=222524&orientation=1', status: 'available', species: 'dog'},
     {name: 'Tiger', picture: 'https://www.thesprucepets.com/thmb/upOmMUmAG50RM0VoDXAOScLNKKQ=/2121x1414/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-1252795793-e24d7e980ed44d16934346866800953b.jpg', status: 'available', species: 'dog'},    {name: 'Marmalade', picture: 'https://media.istockphoto.com/photos/furry-british-breed-cat-white-color-on-isolated-black-background-picture-id980122588?k=20&m=980122588&s=612x612&w=0&h=k42voAupT85hJ0OXjKsp9drPumY5YBBAsBr1-SVK_XQ=', status: 'adopted', species: 'cat'},
     {name: 'Fluffy', picture: 'https://assets.rbl.ms/5074143/origin.jpg', status: 'available', species: 'cat'},
   ]
@@ -30,6 +30,7 @@ const createAnimalList = () => {
       const newImage = document.createElement("img");
       newImage.src = animal.picture;
       newImage.classList.add("animalImg");
+      newImage.style.opacity = animal.status === "adopted" ? "0.3" : "1";
 
       const listItem = document.createElement("li");
       listItem.innerHTML = `${animal.name} <span class="${animal.species} ${animal.status} ${index} spanEle">${animal.status}</span>`;
