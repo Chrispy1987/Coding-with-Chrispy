@@ -42,6 +42,10 @@ const createAnimalList = () => {
   createButtons();
 }
 
+//Create buttons based on pets status
+  //available - show Adopt button
+  //hold - show Confirm and Cancel button
+  //adopted - no buttons
 const createButtons = () => {
   const statusList = document.querySelectorAll(".spanEle");   
 
@@ -52,8 +56,7 @@ const createButtons = () => {
       case "available":
         const claimButton = document.createElement("button");
         claimButton.textContent = "Adopt"
-        claimButton.classList.add("claimButton");
-        //Event listener for CLAIM button
+        //Event listener for CLAIM button. Update object status and reload list, unless viewing 'available only' screen state
         claimButton.addEventListener("click", function () {
           animals[index].status = "hold";
           if (screenState === "available-only") {
@@ -68,8 +71,7 @@ const createButtons = () => {
       case "hold":
         const finaliseButton = document.createElement("button");
         finaliseButton.textContent = "Confirm"
-        finaliseButton.classList.add("finaliseButton");
-        //Event listener for FINALISE button
+        //Event listener for FINALISE button. Update object status and reload list
         finaliseButton.addEventListener("click", function () {
           animals[index].status = "adopted";
           createAnimalList();
@@ -78,8 +80,7 @@ const createButtons = () => {
 
         const cancelButton = document.createElement("button");
         cancelButton.textContent = "Cancel"
-        cancelButton.classList.add("cancelButton");
-        //Event listener for CANCEL button
+        //Event listener for CANCEL button. Update object status and reload list
         cancelButton.addEventListener("click", function () {
           animals[index].status = "available";
           createAnimalList();
@@ -102,7 +103,7 @@ const showAvailablePets = () => {
     return alert("There are no available pets");
   }   
 
-  //If there are pets available, filter out the unavailable ones
+  //If there are pets available, filter out the unavailable ones using switch case
   screenState = "available-only";
   const statusList = document.querySelectorAll(".spanEle"); 
   
@@ -152,63 +153,47 @@ const filterAnimalType = (type) => {
 
 //User to provide pets name and a link to their picture. Reload list
 const addNewPet = () => {  
-  let getPetName = prompt("Please enter the animals name");  
 
+  let getPetName = prompt("Please enter the animals name");  
   while (getPetName === "" || null) {
     getPetName = prompt("Please enter the animals name");  
   }
-  const getPetImage = prompt(`Please provide a URL link to a picture of the ${getPetName}`);
-  while (getPetImage === "") {
-    getPetImage = prompt(`Please provide a URL link to a picture of the ${getPetName}`);
+
+  let getPetImage = prompt(`Please provide a URL link to a picture of ${getPetName}`);
+  while (getPetImage === "" || null) {
+    getPetImage = prompt(`Please provide a URL link to a picture of ${getPetName}`);
   }
-  while (getPetName === "" || null) {
-    getPetName = prompt(`What species of animal is ${getPetName}?`);  
+
+  let getSpecies = prompt(`What species of animal is ${getPetName}?`);
+  while (getSpecies === "" || null) {
+    getSpecies = prompt(`What species of animal is ${getPetName}?`);
   }
-  const getSpecies = prompt(`What species of animal is ${getPetName}?`);
-  while (getSpecies === "") {
-    getSpecies = prompt("Please provide a URL link to a picture of the animal");
-  }
+
   animals.push({name: getPetName, picture: getPetImage, status: "available", species: getSpecies})
   createAnimalList();
 }
 
 //Sort results either alphabetically or by status
 const sortItems = () => {
-  const sortType = document.querySelector("#sort").value;
-  switch(sortType) {
-    case "alphabetical" :
-      animals.sort((firstIndex, secondIndex) => {
-        const name1 = firstIndex.name.toLowerCase();
-        const name2 = secondIndex.name.toLowerCase();
+  const type = document.querySelector("#sort").value;
+  
+  if (type !== "name" && type !=="status") {    
+    return alert("Please select sort type");
+  }      
 
-        if (name1 < name2) {
-          return -1;
-        }
-        if (name1 > name2) {
-          return 1;
-        }
-        return 0
-      })
-      createAnimalList();
-      break;
-    case "status" :
-      animals.sort((firstIndex, secondIndex) => {
-        const status1 = firstIndex.status.toLowerCase();
-        const status2 = secondIndex.status.toLowerCase();
-
-        if (status1 < status2) {
-          return -1;
-        }
-        if (status1 > status2) {
-          return 1;
-        }
-        return 0
-      })
-      createAnimalList();
+  animals.sort((firstIndex, secondIndex) => {
+    const compare1 = firstIndex[type].toLowerCase();
+    const compare2 = secondIndex[type].toLowerCase();
+    if (compare1 < compare2) {
+        return -1;
+    }
+    if (compare1 > compare2) {
+            return 1;
+    }
+      return 0
+    })
+    createAnimalList();
   }
-}
-
-
 
 //Menu Event Listers
 document.querySelector(".showAll").addEventListener("click", createAnimalList);
