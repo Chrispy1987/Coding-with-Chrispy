@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Scav Hunt - Sign Up</title>
+    <link rel="stylesheet" href="signup.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <section class="sign-up">
+      <h1>Scav Hunt</h1>
+      <form id="sign-up-form">
+        <section id="errors"></section>
+        <fieldset>
+          <label for="">Email:</label><br />
+          <input type="text" name="email" />
+        </fieldset>
+        <fieldset>
+          <label for="">Password: </label><br />
+          <input type="password" name="password" />
+        </fieldset>
+        <button>Sign up</button>
+      </form>
+    </section>
+​
+    <script>
+      const form = document.getElementById('sign-up-form');
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const formData = new FormData(form);
+        const data = {
+          email: formData.get('email'),
+          password: formData.get('password')
+        };
+        axios.post('/api/session/signup', data).then(() => {
+            //location is JS equiv of pythons redirect
+            //child of the global window variable            
+            location.href = '/login.html';
+        }).catch((err) => {
+            if (err.response.status === 500) {
+            alert('Oops, failed to sign up. Please try again.');
+            } else {
+            console.log('here')
+            alert(err.response.data.message);
+            }
+        });
+      })
+    </script>
+  </body>
+</html>

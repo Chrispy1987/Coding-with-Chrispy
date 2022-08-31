@@ -1,0 +1,177 @@
+/* scavenger hunt style */
+h1, h2 {
+    font-family: 'Rubik Maze', cursive;
+    text-shadow: -2px 4px 4px #0e1906,
+    1px 1px 2px #40414089,
+    1px 1px 0 #00000089,
+    -1px -1px 0 #0000008a;    
+}
+
+h1 {    
+    color: rgb(33, 147, 54);
+    font-size: 30px;
+    letter-spacing: 5px;  
+}
+h2 {
+    color: rgb(187, 48, 48);
+    font-size: 40px;
+    letter-spacing: 2px;
+    word-spacing: 5px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background-color: rgb(215, 211, 250);
+}
+
+#header-nav {
+    display: flex;
+    padding: 10px;
+    border-bottom: 1px solid #d4d4d4;
+    justify-content: space-between;
+    background-color: rgb(38, 38, 39);
+}
+
+#header-nav > h1 {
+    display: inline-block;
+    padding: 0 10px;
+    margin: 0;
+}
+
+#navlist {
+    display: flex;
+    list-style: none;
+    padding-left: 0;
+    margin: 0 10px;
+    justify-content: space-evenly;
+    
+}
+
+#navlist > li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 30px;
+    margin-right: 10px;
+    background-color: #a1e9ff;
+    border-radius: 3px;
+}
+
+#navlist > li:hover {
+    background-color: #3ed2ff;
+    cursor: pointer;
+}
+
+#page {
+    margin: 20px;
+    width: 100%;
+    padding: 20px 0;
+    display: flex column;
+    justify-content: center;
+    align-items: space-evenly;
+    flex-wrap: wrap;
+}
+.rules {
+    display: flex column;
+    justify-content: center;
+    align-items: space-between;
+    margin: 0 auto;
+    width: 500px;
+    height: auto;
+    padding: 20px 5px;
+    border: solid black 1px;
+    border-radius: 10px;
+    background-color: rgb(185, 209, 212);
+}
+.bold {
+    font-weight: bold;
+}
+
+.challenge {
+    position: relative;
+    border: 1px solid #d4d4d4;
+    padding: 30px 26px;
+    margin: 10px auto;
+    background-color: rgb(207, 250, 219);
+    border: solid black 1px;
+    border-radius: 10px;
+    min-width: 200px;
+    max-width: 800px;
+    box-sizing: border-box;
+    transition: .3s ease all;
+}
+
+.challenge:hover {
+    border: solid yellow 6px;
+}
+.challenge-field {
+    margin: 5px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    min-width: 200px;
+    max-width: 700px;    
+    border-radius: 10px;
+    background-color: rgb(185, 209, 212);
+}
+.challenge-input {
+    width: 70%;
+    padding: 5px 10px;
+    background-color: white;
+}
+.challenge-name {
+    font-family: 'DynaPuff', cursive;
+    font-weight: bold;
+    text-transform: capitalize;
+    font-size: 18px;
+    color:rgb(76, 73, 94);
+}
+.message {
+    color: red;
+}
+/* BUTTONS */
+.delete, .edit{
+    background-color: #a1e9ff;   
+    padding: 5px;
+    min-width: 60px;
+    border-radius: 6px;
+}
+.delete:hover, .edit:hover {
+    background-color: #3ed2ff;
+}
+.delete {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+.confirm {
+    color: red;
+    font-weight: bold;
+}
+.edit {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;    
+}
+.expand {
+    position: absolute;
+    top: 10px;
+    left: 10px;  
+    padding: 5px 8px;
+    background-color: aqua;
+}
+.save {
+    margin-top: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 8px 5px;
+    min-width: 80px;
+    border-radius: 6px;
+    background-color: rgb(204, 227, 230);  
+}
+.save:hover {
+    background-color: rgb(118, 201, 150);
+}
